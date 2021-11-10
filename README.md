@@ -1,0 +1,2 @@
+# customJavascriptLibrrary
+练习封装JavaScript函数库

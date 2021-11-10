@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>js库demoHTML</title>
+        <style type="text/css">
+            .section {
+                height: 1000vh;
+                background: linear-gradient(#125, #eae);
+            }
+            .items {
+                width: 100vw;
+                height: 50px;
+                background-color: aqua;
+                position: relative;
+            }
+            .inner {
+                width: 50vw;
+                height: 20px;
+                background-color: violet;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .input {
+                border: 2px solid #000
+            }
+        </style>
+    </head>
+    <body>
+        <section class="section">
+            <ul class="items">
+                <li class="item">a</li>
+                <li class="item">b</li>
+                <li class="item">c</li>
+                <li class="item">d</li>
+                <div>fff</div>
+            </ul>
+            <input class="input" />
+        </section>
+    </body>
+    <script src="./call.js"></script>
+    <script src="./apply.js"></script>
+    <script src="./bind.js"></script>
+    <script src="./throttle.js"></script>
+    <script src="./debounce.js"></script>
+    <script src="./map.js"></script>
+    <script src="./reduce.js"></script>
+    <script src="./filter.js"></script>
+    <script src="./find.js"></script>
+    <script src="./findIndex.js"></script>
+    <script src="./every.js"></script>
+    <script src="./some.js"></script>
+    <script src="./unique.js"></script>
+    <script src="./concat.js"></script>
+    <script src="./slice.js"></script>
+    <script src="./flatten.js"></script>
+    <script src="./chunk.js"></script>
+    <script src="./difference.js"></script>
+    <script src="./pull.js"></script>
+    <script src="./drop.js"></script>
+    <script src="./newInstance.js"></script>
+    <script src="./instanceOf.js"></script>
+    <script src="./merageObject.js"></script>
+    <script src="./clone.js"></script>
+    <script src="./string.js"></script>
+    <script src="./event.js"></script>
+    <script src="./event-bus.js"></script>
+    <script src="./subScribeAndPublish.js"></script>
+    <script src="./axios.js"></script>
+    <!--测试自定义call-->
+    <!-- <script lang="javascript">
+        function add(a, b) {
+            console.log(this)
+            return a+b+this.c
+        }
+
+        let obj = {
+            c: 521
+        }
+        // 添加全局属性
+        window.c = 1314
+        // 执行call函数，看this是否指向obj
+        // console.log(call(add, obj, 10, 20))
+        // console.log(call(add, null, 30, 40))
+        // 执行apply函数，看是否指向obj
+        // console.log(apply(add, obj, [10, 20]))
+        // console.log(apply(add, null, [30, 40]))
+        // console.log(obj)
+        // 执行bind函数
+        // let fn = bind(add, obj, 10, 20)
+        // console.log(fn())
+        let fn = bind(add, obj, 0, 0)
+        console.log(fn(10, 20))
+    </script> -->
+    <!-- 测试 节流-->
+    <!-- <script lang="javascript">
+        window.addEventListener("scroll", throttle(function(){
+            console.log(Date.now())
+        }, 500))
+    </script> -->
+    <!-- 测试 防抖-->
+    <!-- <script lang="javascript">
+        let input = document.querySelector('.input')
+        input.onkeydown = document.addEventListener("keydown", debounce(function(e) {
+            console.log('防抖', e)
+        }, 1000))
+    </script> -->
+    <!-- 测试 map -->
+    <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        const result = map(arr, (item, index) => {
+            return item*10
+        })
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 reduce -->
+    <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        const result = reduce(arr, (accumulator, currentItem) => {
+            return accumulator + currentItem
+        }, 0)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 filter -->
+    <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        const result = filter(arr, (item, index) => item%2 === 1)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 find -->
+    <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        const result = find(arr, (item, index) => {
+            return item > 1;
+        })
+
+        console.log(result)
+    </script> -->
+     <!-- 测试 findIndex -->
+     <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        const result = findIndex(arr, (item, index) => {
+            return item > 1;
+        })
+
+        console.log(result)
+    </script> -->
+     <!-- 测试 every some -->
+    <!-- <script>
+        const arr = [1, 2, 3, 4, 5];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = some(arr, (item, index) => {
+            return item > 1;
+        })
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 unique -->
+    <!-- <script>
+        const arr = [1, 2, 3, 3, 5, 4, 5, 2, 1, 6, 6];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = unique3(arr)
+
+        console.log(result)
+    </script> -->
+    <!--测试 concat-->
+    <!-- <script>
+        const arr = [1, 2, 3];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = concat(arr, [4, 5], 6, 87)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 slice -->
+    <!-- <script>
+        const arr = [1, 2, 3];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = slice(arr)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 slice -->
+    <!-- <script>
+        const arr = [1, 2, [3, 4, [5, 6]], 8, 10];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = flatten2(arr)
+
+        console.log(result)
+    </script> -->
+     <!-- 测试 chunk -->
+    <!-- <script>
+        const arr = [1, 2, [3, 4, [5, 6]], 8, 10];
+
+        // const result = every(arr, (item, index) => {
+        //     return item > 0;
+        // })
+
+        const result = chunk(arr)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 difference差集 -->
+    <!-- <script>
+        const arr = [1, 2, 8, 10];
+
+        const result = pullAll(arr, [8, 1])
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 drop -->
+    <!-- <script>
+        const arr = [1, 2, 8, 10];
+
+        const result = dropRight(arr, 2)
+
+        console.log(result)
+    </script> -->
+    <!-- 测试 newInstance -->
+    <!-- <script>
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+
+            return []
+        }
+
+        let obj = newInstance(Person, '张三', 10)
+
+        console.log(obj)
+    </script> -->
+    <!-- 测试 instanceOf -->
+    <!-- <script>
+        function Person() {}
+
+        let p = new Person()
+
+        console.log(instanceOf(p, Person))
+        console.log(instanceOf(p, Object))
+        console.log(instanceOf(Person, Function))
+        console.log(instanceOf(p, Function))
+    </script> -->
+    <!-- 测试 clone -->
+    <!-- <script>
+        const object = {
+            a: 1,
+            b: ['a'],
+            c: {z: 4},
+            d: function() {}
+        }
+        object.b.push(object.c)
+        object.c.j = object.b
+        // const arr = [1, 2, 3, 4]
+        const result = deepClone4(object)
+        // const result = simplyClone2(arr)
+
+        result.c.z = 2
+        console.log(object)
+        // console.log(arr)
+        console.log(result)
+        console.log(object === result)
+    </script> -->
+    <!-- 测试 字符串 -->
+    <!-- <script>
+        let str = 'i love you';
+        let str1 = 'abc';
+        let str3 = '放得开设计规范的萨拉风力可达十六客服反倒是啦看'
+
+        console.log(reverseString(str))
+        // 判断是否是回文
+        console.log(palindrome(str1))
+        // 截断字符串
+        console.log(subString(str3, 10))
+    </script> -->
+    <!--测试 事件-->
+    <!-- <script>
+        // let outer = document.querySelector(".outer")
+        // let inner = document.querySelector('.inner')
+
+        // outer.addEventListener('click', () => {
+        //     console.log("捕获 outer")
+        // }, true)
+
+        // inner.addEventListener("click", () => {
+        //     console.log("捕获 inner")
+        // }, true)
+
+        // outer.addEventListener('click', () => {
+        //     console.log("冒泡 outer")
+        // })
+
+        // inner.addEventListener("click", () => {
+        //     console.log("冒泡 inner")
+        // })
+
+        addEventListener(".items", 'click', function(e) {
+            console.log(this.innerHTML)
+        }, 'li')
+
+        eventBus.on("login", data => {
+            console.log(data + "用户登录")
+        })
+
+        eventBus.on("loginOut", data => {
+            console.log(data + "用户退出登录")
+        })
+
+        eventBus.on("login", data => {
+            console.log(data + '用户数据已写入')
+        })
+
+        console.log(eventBus)
+
+        setTimeout(() => {
+            eventBus.emit("login", "张三")
+        }, 2000)
+
+        eventBus.off()
+
+        console.log(eventBus)
+    </script> -->
+    <!-- 测试 消息订阅与发布 -->
+    <!-- <script>
+        // 订阅频道
+        const pid1 = publishSub.subscribe('pay', (data) => {
+            console.log("商家订阅"+ data)
+        })
+
+        const pid2 = publishSub.subscribe('pay', (data) => {
+            console.log("骑手接到订阅去取餐"+ data)
+        })
+
+        const pid3 = publishSub.subscribe('cancel', (data) => {
+            console.log("商家接到了取消订单的消息"+ data)
+        })
+
+        console.log(publishSub)
+
+        publishSub.unSubscribe('cancel')
+
+        //  输出唯一的token
+        console.log(publishSub)
+
+        // 发布消息
+        publishSub.publish("pay", {
+            title: '鱼香肉丝',
+            price: 20,
+            position: '三年二班'
+        })
+
+        // 取消订阅
+        // publishSub.unSubscribe()
+    </script> -->
+    <!-- 测试 axios -->
+    <script>
+        // 函数
+        axios({
+            // 请求方法
+            method: 'POST',
+            // 请求的url
+            url: 'https://api.apiopen.top/getJoke',
+            // url参数
+            params: {
+                a: 100,
+                b: 200
+            },
+            // 请求体
+            data: {
+                a: 100,
+                b: 200
+            }
+        }).then(() => {}).catch(() => {})
+
+        axios.get('https://api.apiopen.top/getJoke', {
+            params: {
+                a: 220,
+                b: 300
+            }
+        }).then((res) => {})
+
+        axios.post('https://api.apiopen.top/getJoke', {
+            params: {
+                a: 220,
+                b: 300
+            }
+        }).then((res) => {})
+
+        axios.put('https://api.apiopen.top/getJoke', {
+            params: {
+                a: 220,
+                b: 300
+            }
+        }).then((res) => {})
+
+        axios.delete('https://api.apiopen.top/getJoke', {
+            params: {
+                a: 220,
+                b: 300
+            }
+        }).then((res) => {})
+    </script>
+</html>
